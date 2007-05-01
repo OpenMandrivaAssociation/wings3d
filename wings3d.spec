@@ -16,8 +16,8 @@ BuildRequires:	erlang-compiler
 BuildRequires:	erlang-devel
 BuildRequires:	erlang-esdl-devel	>= 0.96.0626-3
 BuildRequires:	mesa-common-devel
-
 BuildRequires:	SDL-devel
+BuildRequires:	imagemagick
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -64,7 +64,7 @@ rm -rf %{buildroot}
 %doc AUTHORS license.terms README
 %doc *.pdf
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}/*
+%{_datadir}/%{oname}/*
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
