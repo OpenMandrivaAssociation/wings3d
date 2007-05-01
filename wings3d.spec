@@ -4,20 +4,21 @@
 Summary: 	A subdivision modeler
 Name: 		wings3d
 Version: 	0.98.36
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 License: 	BSD-like
 Group: 		Graphics
-Url: 		http://www.wings3d.org/
+Url: 		http://www.wings3d.com
 Source0: 	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
 Source1:   	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
 BuildRequires:	erlang-base		>= R11B-6
 BuildRequires:	erlang-compiler
 BuildRequires:	erlang-devel
-BuildRequires:	erlang-esdl-devel	>= 0.96.0626-3
+BuildRequires:	erlang-esdl-devel	>= 0.96.0626-4
 BuildRequires:	mesa-common-devel
 BuildRequires:	SDL-devel
 BuildRequires:	imagemagick
+Requires:	erlang-esdl		>= 0.96.0626-4
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
