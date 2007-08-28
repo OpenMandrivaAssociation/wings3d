@@ -92,7 +92,6 @@ convert %{SOURCE1} -size 48x48 %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{nam
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=Wings 3D
 Comment=%{summary}
 Exec=%{_bindir}/%{name} 
