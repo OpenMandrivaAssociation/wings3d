@@ -95,7 +95,7 @@ cat > %{buildroot}%{_datadir}/applications/%{name}.desktop << EOF
 Name=Wings 3D
 Comment=%{summary}
 Exec=%{_bindir}/%{name} 
-Icon=%{name}.png
+Icon=%{name}
 Terminal=false
 Type=Application
 StartupNotify=true
