@@ -19,7 +19,6 @@ BuildRequires:	erlang-compiler
 BuildRequires:	erlang-esdl-devel	>= 0.96.0626-4
 BuildRequires:	imagemagick
 Requires:	erlang-esdl		>= 0.96.0626-4
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Wings 3D is a free and open source polygon mesh subdivision 
