@@ -15,11 +15,13 @@ Source1:   	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
 Source3:	wingspov-0.98.28_v1.tgz
 Patch0:		%{oname}-0.98.36-accel-optflags.patch
+Patch1:		%{oname}-0.99.00b-esdl-include.patch
+Patch2:		%{oname}-0.99.00b-plugins_src-makefile.patch
 BuildRequires:	erlang-compiler
 BuildRequires:	erlang-esdl-devel	>= 0.96.0626-4
 BuildRequires:	imagemagick
+BuildRequires:	libjpeg-devel
 Requires:	erlang-esdl		>= 0.96.0626-4
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Wings 3D is a free and open source polygon mesh subdivision 
@@ -42,7 +44,8 @@ Povray import/export plug-in for Wings 3D.
 %prep
 %setup -qn %{oname}-%{version}
 %patch0 -p1
-
+%patch1 -p1
+%patch2 -p1
 tar zxf %{SOURCE3}
 
 %build
@@ -79,7 +82,7 @@ install -d -m 755 %{buildroot}/%{_bindir}
 cat > %{buildroot}/%{_bindir}/%{name} << "EOF"
 #!/bin/sh
 export ESDL_PATH=%{esdldir}
-erl -pa $ESDL_PATH/ebin %{wingsdir}/ebin -run wings_start start_halt
+erl -pa $ESDL_PATH/ebin %{wingsdir}/ebin -run -noinput -smp disable wings_start start_halt "$@"
 EOF
 
 # icons
@@ -116,7 +119,7 @@ rm -rf %{buildroot}
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS license.terms README
-%doc *.pdf AUTHORS NOTES README license.terms
+%doc *.pdf NOTES
 %attr(755,root,root) %{_bindir}/*
 %{wingsdir}
 %{_iconsdir}/hicolor/*/apps/%{name}.png
