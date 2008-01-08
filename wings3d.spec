@@ -6,7 +6,7 @@
 Summary: 	A 3D subdivision modeler
 Name: 		wings3d
 Version: 	0.99.00b
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 License: 	BSD-like
 Group: 		Graphics
 Url: 		http://www.wings3d.com
@@ -82,7 +82,7 @@ install -d -m 755 %{buildroot}/%{_bindir}
 cat > %{buildroot}/%{_bindir}/%{name} << "EOF"
 #!/bin/sh
 export ESDL_PATH=%{esdldir}
-erl -pa $ESDL_PATH/ebin %{wingsdir}/ebin -run -noinput -smp disable wings_start start_halt "$@"
+erl -pa $ESDL_PATH/ebin %{wingsdir}/ebin -noinput -smp disable -run wings_start start_halt "$@"
 EOF
 
 # icons
