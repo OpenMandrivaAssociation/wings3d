@@ -2,6 +2,7 @@
 %define erlangdir %{_libdir}/erlang
 %define wingsdir %{erlangdir}/lib/%{oname}-%{version}
 %define esdldir %{erlangdir}/lib/esdl-0.96-0626
+%define esdl_ver 0.96.0626
 
 Summary: 	A 3D subdivision modeler
 Name: 		wings3d
@@ -14,14 +15,13 @@ Source0: 	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
 Source1:   	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
 Source3:	wingspov-0.98.28_v1.tgz
-Patch0:		%{oname}-0.98.36-accel-optflags.patch
-Patch1:		%{oname}-0.99.00b-esdl-include.patch
-Patch2:		%{oname}-0.99.00b-plugins_src-makefile.patch
+Patch0:		%{oname}-0.99.01-accel-optflags.patch
+Patch2:		%{oname}-0.99.01-plugins_src-makefile.patch
 BuildRequires:	erlang-compiler
-BuildRequires:	erlang-esdl-devel	>= 0.96.0626-4
+BuildRequires:	erlang-esdl-devel	>= %{esdl_ver}-4
 BuildRequires:	imagemagick
 BuildRequires:	libjpeg-devel
-Requires:	erlang-esdl		>= 0.96.0626-4
+Requires:	erlang-esdl		>= %{esdl_ver}-4
 
 %description
 Wings 3D is a free and open source polygon mesh subdivision 
@@ -44,13 +44,15 @@ Povray import/export plug-in for Wings 3D.
 %prep
 %setup -qn %{oname}-%{version}
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
+
 tar zxf %{SOURCE3}
 
 %build
 export CFLAGS="%{optflags}"
 export PATH=%{erlangdir}/bin:$PATH
+export ESDL_PATH=%{erlangdir}/lib/esdl-0.96.0626
+
 %(echo %make|perl -pe 's/-j\d+/-j1/g')
 
 %install
