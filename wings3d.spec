@@ -10,6 +10,7 @@ Version: 	0.99.01
 Release: 	%mkrel 1
 License: 	BSD-like
 Group: 		Graphics
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url: 		http://www.wings3d.com
 Source0: 	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
 Source1:   	%{name}.png
