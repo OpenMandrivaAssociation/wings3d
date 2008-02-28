@@ -7,10 +7,9 @@
 Summary: 	A 3D subdivision modeler
 Name: 		wings3d
 Version: 	0.99.01
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 License: 	BSD-like
 Group: 		Graphics
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url: 		http://www.wings3d.com
 Source0: 	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
 Source1:   	%{name}.png
@@ -23,6 +22,7 @@ BuildRequires:	erlang-esdl-devel	>= %{esdl_ver}-4
 BuildRequires:	imagemagick
 BuildRequires:	libjpeg-devel
 Requires:	erlang-esdl		>= %{esdl_ver}-4
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Wings 3D is a free and open source polygon mesh subdivision 
