@@ -6,8 +6,8 @@
 
 Summary: 	A 3D subdivision modeler
 Name: 		wings3d
-Version: 	0.99.01
-Release: 	%mkrel 2
+Version: 	0.99.02
+Release: 	%mkrel 1
 License: 	BSD-like
 Group: 		Graphics
 Url: 		http://www.wings3d.com
