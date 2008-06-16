@@ -6,7 +6,7 @@
 
 Summary: 	A 3D subdivision modeler
 Name: 		wings3d
-Version: 	0.99.02
+Version: 	0.99.03
 Release: 	%mkrel 1
 License: 	BSD-like
 Group: 		Graphics
@@ -41,7 +41,6 @@ Requires:	povray
 %description povray
 Povray import/export plug-in for Wings 3D.
 
-
 %prep
 %setup -qn %{oname}-%{version}
 %patch0 -p1
@@ -54,7 +53,7 @@ export CFLAGS="%{optflags}"
 export PATH=%{erlangdir}/bin:$PATH
 export ESDL_PATH=%{erlangdir}/lib/esdl-0.96.0626
 
-%(echo %make|perl -pe 's/-j\d+/-j1/g')
+%make -j1
 
 %install
 rm -rf %{buildroot}
