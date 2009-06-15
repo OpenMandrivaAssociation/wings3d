@@ -1,12 +1,12 @@
 %define oname wings
 %define erlangdir %{_libdir}/erlang
 %define wingsdir %{erlangdir}/lib/%{oname}-%{version}
-%define esdldir %{erlangdir}/lib/esdl-0.96-0626
-%define esdl_ver 0.96.0626
+%define esdldir %{erlangdir}/addons/esdl-1.0.1
+%define esdl_ver 1.0.1
 
 Summary: 	A 3D subdivision modeler
 Name: 		wings3d
-Version: 	0.99.53
+Version: 	1.0.1
 Release: 	%mkrel 1
 License: 	BSD-like
 Group: 		Graphics
@@ -16,12 +16,12 @@ Source1:   	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
 Source3:	wingspov-0.98.28_v1.tgz
 Patch0:		%{oname}-0.99.01-accel-optflags.patch
-Patch2:		%{oname}-0.99.01-plugins_src-makefile.patch
+Patch2:		%{oname}-1.0.1-plugins_src-makefile.patch
 BuildRequires:	erlang-compiler
-BuildRequires:	erlang-esdl-devel	>= %{esdl_ver}-4
+BuildRequires:	erlang-esdl-devel >= %{esdl_ver}
 BuildRequires:	imagemagick
 BuildRequires:	libjpeg-devel
-Requires:	erlang-esdl		>= %{esdl_ver}-4
+Requires:	erlang-esdl >= %{esdl_ver}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -46,14 +46,14 @@ Povray import/export plug-in for Wings 3D.
 %patch0 -p1
 %patch2 -p1
 
-tar zxf %{SOURCE3}
+tar xf %{SOURCE3}
 
 %build
 export CFLAGS="%{optflags}"
 export PATH=%{erlangdir}/bin:$PATH
-export ESDL_PATH=%{erlangdir}/lib/esdl-0.96.0626
+export ESDL_PATH=%{esdldir}
 
-%make -j1
+%make
 
 %install
 rm -rf %{buildroot}
@@ -99,7 +99,7 @@ cat > %{buildroot}%{_datadir}/applications/%{name}.desktop << EOF
 [Desktop Entry]
 Name=Wings 3D
 Comment=%{summary}
-Exec=%{_bindir}/%{name} 
+Exec=%{_bindir}/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
@@ -123,9 +123,9 @@ EOF
 rm -rf %{buildroot}
 
 %files
-%defattr(644,root,root,755)
+%defattr(-,root,root)
 %doc AUTHORS license.terms README
-%doc *.pdf NOTES
+%doc *.pdf NOTES-*
 %attr(755,root,root) %{_bindir}/*
 %{wingsdir}
 %{_iconsdir}/hicolor/*/apps/%{name}.png
