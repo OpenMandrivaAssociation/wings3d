@@ -53,7 +53,7 @@ export CFLAGS="%{optflags}"
 export PATH=%{erlangdir}/bin:$PATH
 export ESDL_PATH=%{esdldir}
 
-%make
+%make -j4
 
 %install
 rm -rf %{buildroot}
