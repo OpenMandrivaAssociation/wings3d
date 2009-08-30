@@ -6,8 +6,8 @@
 
 Summary: 	A 3D subdivision modeler
 Name: 		wings3d
-Version: 	1.0.1
-Release: 	%mkrel 2
+Version: 	1.1.12
+Release: 	%mkrel 1
 License: 	BSD-like
 Group: 		Graphics
 Url: 		http://www.wings3d.com
@@ -15,8 +15,7 @@ Source0: 	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
 Source1:   	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
 Source3:	wingspov-0.98.28_v1.tgz
-Patch0:		%{oname}-0.99.01-accel-optflags.patch
-Patch2:		%{oname}-1.0.1-plugins_src-makefile.patch
+Patch2:		%{oname}-1.1.12-plugins_src-makefile.patch
 BuildRequires:	erlang-compiler
 BuildRequires:	erlang-esdl-devel >= %{esdl_ver}
 BuildRequires:	imagemagick
@@ -43,7 +42,6 @@ Povray import/export plug-in for Wings 3D.
 
 %prep
 %setup -qn %{oname}-%{version}
-%patch0 -p1
 %patch2 -p1
 
 tar xf %{SOURCE3}
