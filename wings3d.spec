@@ -3,15 +3,16 @@
 %define wingsdir %{erlangdir}/lib/%{oname}-%{version}
 %define esdldir %{erlangdir}/addons/esdl-1.0.1
 %define esdl_ver 1.0.1
+%define rel rc1
 
 Summary: 	A 3D subdivision modeler
 Name: 		wings3d
-Version: 	1.1.14
-Release: 	%mkrel 1
+Version: 	1.2
+Release: 	%mkrel -c %rel 1
 License: 	BSD-like
 Group: 		Graphics
 Url: 		http://www.wings3d.com
-Source0: 	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
+Source0: 	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.%rel.tar.bz2
 Source1:   	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
 Source3:	wingspov-0.98.28_v1.tgz
@@ -41,7 +42,7 @@ Requires:	povray
 Povray import/export plug-in for Wings 3D.
 
 %prep
-%setup -qn %{oname}-%{version}
+%setup -qn %{oname}-%{version}.%rel
 %patch2 -p1
 
 tar xf %{SOURCE3}
