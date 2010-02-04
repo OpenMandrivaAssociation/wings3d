@@ -41,7 +41,7 @@ Requires:	povray
 Povray import/export plug-in for Wings 3D.
 
 %prep
-%setup -q
+%setup -qn %{oname}-%{version}
 %patch2 -p1
 
 tar xf %{SOURCE3}
