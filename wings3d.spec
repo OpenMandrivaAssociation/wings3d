@@ -18,6 +18,7 @@ Source3:	wingspov-0.98.28_v1.tgz
 Patch2:		%{oname}-1.1.12-plugins_src-makefile.patch
 BuildRequires:	erlang-compiler
 BuildRequires:	erlang-esdl-devel >= %{esdl_ver}
+BuildRequires:	erlang-xmerl
 BuildRequires:	imagemagick
 BuildRequires:	libjpeg-devel
 Requires:	erlang-esdl >= %{esdl_ver}
