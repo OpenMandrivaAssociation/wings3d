@@ -1,5 +1,4 @@
+---
 sources:
-  "wings-1.2.tar.bz2:"	a7c7e6df6a6748b7322de587094cd66ef823c5b5
-  "wings3d_manual1.6.1.pdf:"	7310c1a069274ce8bfa46632c935294d75a11470
-  "wings3d.png:"	9c2633efd9dca03d1a68912265a7484e3da72f8f
-  "wingspov-0.98.28_v1.tgz:"	75567df443d89251ff2123691a3528a5661afd0a
+  wings-1.4.1.tar.bz2: 564b4029c14d38536e7198ea4fd42c8ed46f17b0
+  wingspov-0.98.28_v1.tgz: 75567df443d89251ff2123691a3528a5661afd0a

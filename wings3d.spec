@@ -1,28 +1,29 @@
 %define oname wings
 %define erlangdir %{_libdir}/erlang
 %define wingsdir %{erlangdir}/lib/%{oname}-%{version}
-%define esdldir %{erlangdir}/addons/esdl-1.0.1
-%define esdl_ver 1.0.1
+%define esdldir %{erlangdir}/addons/esdl-1.2
+%define esdl_ver 1.2
 
-Summary: 	A 3D subdivision modeler
-Name: 		wings3d
-Version: 	1.2
-Release: 	%mkrel 2
-License: 	BSD-like
-Group: 		Graphics
-Url: 		http://www.wings3d.com
-Source0: 	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
-Source1:   	%{name}.png
+Summary:	A 3D subdivision modeler
+Name:		wings3d
+Version:	1.4.1
+Release:	1
+License:	BSD-like
+Group:		Graphics
+Url:		http://www.wings3d.com
+Source0:	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
+Source1:	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
 Source3:	wingspov-0.98.28_v1.tgz
-Patch2:		%{oname}-1.1.12-plugins_src-makefile.patch
+Patch0:		wings-1.4.1-esdl1.2.patch
 BuildRequires:	erlang-compiler
 BuildRequires:	erlang-esdl-devel >= %{esdl_ver}
+BuildRequires:	erlang-wx
 BuildRequires:	erlang-xmerl
 BuildRequires:	imagemagick
-BuildRequires:	libjpeg-devel
+BuildRequires:	jpeg-devel
 Requires:	erlang-esdl >= %{esdl_ver}
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Requires:	erlang-wx
 
 %description
 Wings 3D is a free and open source polygon mesh subdivision 
@@ -43,7 +44,7 @@ Povray import/export plug-in for Wings 3D.
 
 %prep
 %setup -qn %{oname}-%{version}
-%patch2 -p1
+%patch0 -p1
 
 tar xf %{SOURCE3}
 
@@ -55,8 +56,6 @@ export ESDL_PATH=%{esdldir}
 %make -j4
 
 %install
-rm -rf %{buildroot}
-
 install -d -m 755 %{buildroot}/%{wingsdir}
 cat %{SOURCE2} > ./%{name}_manual1.6.1.pdf
 
@@ -106,23 +105,7 @@ StartupNotify=true
 Categories=Graphics;3DGraphics;
 EOF
 
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%clean_icon_cache hicolor
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS license.terms README
 %doc *.pdf NOTES-*
 %attr(755,root,root) %{_bindir}/*
@@ -140,3 +123,5 @@ rm -rf %{buildroot}
 %{wingsdir}/plugins/import_export/pov_exp.beam
 %{wingsdir}/plugins/import_export/pov_ui.beam
 %{wingsdir}/plugins/import_export/wpc_pov.beam
+
+

@@ -1,0 +1,26 @@
+diff -urN wings-1.4.1/plugins_src/primitives/wpc_image.erl wings-1.4.1-patched/plugins_src/primitives/wpc_image.erl
+--- wings-1.4.1/plugins_src/primitives/wpc_image.erl	2011-02-06 04:12:55.000000000 +1000
++++ wings-1.4.1-patched/plugins_src/primitives/wpc_image.erl	2012-11-18 14:30:13.886312920 +1100
+@@ -14,7 +14,7 @@
+ -module(wpc_image).
+ -export([init/0,menu/2,command/2]).
+ 
+--include_lib("esdl/include/gl.hrl").
++-include_lib("wx/include/gl.hrl").
+ -include("e3d.hrl").
+ -include("e3d_image.hrl").
+ -include("wings_intl.hrl").
+diff -urN wings-1.4.1/src/wings.hrl wings-1.4.1-patched/src/wings.hrl
+--- wings-1.4.1/src/wings.hrl	2011-02-06 04:12:55.000000000 +1000
++++ wings-1.4.1-patched/src/wings.hrl	2012-11-18 14:22:09.000000000 +1100
+@@ -28,8 +28,8 @@
+ 
+ -ifndef(USE_WX).
+ -ifdef(NEED_OPENGL).
+--include_lib("esdl/include/gl.hrl").
+--include_lib("esdl/include/glu.hrl").
++-include_lib("wx/include/gl.hrl").
++-include_lib("wx/include/glu.hrl").
+ -endif.
+ -endif.
+ 
