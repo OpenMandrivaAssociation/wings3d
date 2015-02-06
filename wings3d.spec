@@ -7,7 +7,7 @@
 Summary:	A 3D subdivision modeler
 Name:		wings3d
 Version:	1.4.1
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Graphics
 Url:		http://www.wings3d.com
