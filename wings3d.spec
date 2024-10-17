@@ -10,7 +10,7 @@ Version:	1.4.1
 Release:	2
 License:	BSD-like
 Group:		Graphics
-Url:		http://www.wings3d.com
+Url:		https://www.wings3d.com
 Source0:	http://prdownloads.sourceforge.net/wings/%{oname}-%{version}.tar.bz2
 Source1:	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
