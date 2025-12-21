@@ -16,6 +16,7 @@ Source1:	%{name}.png
 Source2:	%{name}_manual1.6.1.pdf
 Source3:	wingspov-0.98.28_v1.tgz
 Patch0:		wings-1.4.1-esdl1.2.patch
+BuildRequires:	make
 BuildRequires:	erlang-compiler
 BuildRequires:	erlang-esdl-devel >= %{esdl_ver}
 BuildRequires:	erlang-wx
